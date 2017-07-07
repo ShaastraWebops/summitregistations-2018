@@ -7,29 +7,19 @@ import routes from './registration.routes';
 
 export class RegistrationComponent {
 
-  
-socket;
-$http;  
-newparticpant = [];
-
-  constructor($http,$scope,socket) {
+  constructor($http) {
         'ngInject';
 
     this.$http = $http;
-    this.socket = socket;
-    this.$scope = $scope;
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('registration');
-    });
+    this.newparticpant = {};
   }
 
   $onInit() {
-    step=1;
+  this.step=1;
   }
 
  submitform(){
   console.log("Entered submitform");
-    if(this.newparticpant) {
       this.$http.post('/api/participant', {
         name: this.newparticpant.name,
         insti: this.newparticpant.insti,
@@ -51,9 +41,10 @@ newparticpant = [];
         mem4_email: this.newparticpant.mem4_email,
         mem5_name: this.newparticpant.mem5_name,
         mem5_email: this.newparticpant.mem5_email,
+      }).then(() => {
+        console.log('done');
+        this.newparticpant = {};
       });
-      this.newparticpant = {};
-    }
   }
        
 }
