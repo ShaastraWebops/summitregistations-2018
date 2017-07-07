@@ -11,7 +11,7 @@ export class RegistrationComponent {
         'ngInject';
 
     this.$http = $http;
-    this.newparticpant = {
+    this.newparticipant = {
       name: 'gokulan',
         insti: '',
         stream: '',
@@ -40,28 +40,27 @@ export class RegistrationComponent {
   }
 
  submitform(){
-  console.log(this.newparticpant);
       this.$http.post('/api/participants', {
-        name: this.newparticpant.name,
-        insti: this.newparticpant.insti,
-        stream: this.newparticpant.stream,
-        mobile_no: this.newparticpant.mobile_no,
-        alt_mobno: this.newparticpant.alt_mobno,
-        email: this.newparticpant.email,
-        resumeurl: this.newparticpant.resumeurl,
-        q1_ans: this.newparticpant.q1_ans,
-        q2_ans: this.newparticpant.q2_ans,
-        team_name: this.newparticpant.team_name,
-        mem1_name: this.newparticpant.mem1_name,
-        mem1_email: this.newparticpant.mem1_email,
-        mem2_name: this.newparticpant.mem2_name,
-        mem2_email: this.newparticpant.mem2_email,
-        mem3_name: this.newparticpant.mem3_name,
-        mem3_email: this.newparticpant.mem3_email,
-        mem4_name: this.newparticpant.mem4_name,
-        mem4_email: this.newparticpant.mem4_email,
-        mem5_name: this.newparticpant.mem5_name,
-        mem5_email: this.newparticpant.mem5_email
+        name: this.newparticipant.name,
+        insti: this.newparticipant.insti,
+        stream: this.newparticipant.stream,
+        mobile_no: this.newparticipant.mobile_no,
+        alt_mobno: this.newparticipant.alt_mobno,
+        email: this.newparticipant.email,
+        resumeurl: this.newparticipant.resumeurl,
+        q1_ans: this.newparticipant.q1_ans,
+        q2_ans: this.newparticipant.q2_ans,
+        team_name: this.newparticipant.team_name,
+        mem1_name: this.newparticipant.mem1_name,
+        mem1_email: this.newparticipant.mem1_email,
+        mem2_name: this.newparticipant.mem2_name,
+        mem2_email: this.newparticipant.mem2_email,
+        mem3_name: this.newparticipant.mem3_name,
+        mem3_email: this.newparticipant.mem3_email,
+        mem4_name: this.newparticipant.mem4_name,
+        mem4_email: this.newparticipant.mem4_email,
+        mem5_name: this.newparticipant.mem5_name,
+        mem5_email: this.newparticipant.mem5_email
       }).then(data => {
         var formData = new FormData;
                 var file = $('#file')[0].files[0];
@@ -78,10 +77,13 @@ export class RegistrationComponent {
                   angular.element("input[name='file_name']").val(null);
                 });
         console.log('done');
-        this.newparticpant = {};
+        this.newparticipant = {};
       });
   }
 
+  changes(){
+    console.log(this.newparticipant.name);
+  }
 }
 
 export default angular.module('summitregistations2018App.registration', [uiRouter])
