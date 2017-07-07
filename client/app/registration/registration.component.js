@@ -11,7 +11,28 @@ export class RegistrationComponent {
         'ngInject';
 
     this.$http = $http;
-    this.newparticpant = {};
+    this.newparticpant = {
+      name: 'gokulan',
+        insti: '',
+        stream: '',
+        mobile_no: '',
+        alt_mobno: '',
+        email: '',
+        resumeurl: '',
+        q1_ans: '',
+        q2_ans: '',
+        team_name: '',
+        mem1_name: '',
+        mem1_email: '',
+        mem2_name: '',
+        mem2_email: '',
+        mem3_name: '',
+        mem3_email: '',
+        mem4_name: '',
+        mem4_email: '',
+        mem5_name: '',
+        mem5_email: ''
+    };
   }
 
   $onInit() {
@@ -19,8 +40,8 @@ export class RegistrationComponent {
   }
 
  submitform(){
-  console.log("Entered submitform");
-      this.$http.post('/api/participant', {
+  console.log(this.newparticpant);
+      this.$http.post('/api/participants', {
         name: this.newparticpant.name,
         insti: this.newparticpant.insti,
         stream: this.newparticpant.stream,
@@ -40,7 +61,7 @@ export class RegistrationComponent {
         mem4_name: this.newparticpant.mem4_name,
         mem4_email: this.newparticpant.mem4_email,
         mem5_name: this.newparticpant.mem5_name,
-        mem5_email: this.newparticpant.mem5_email,
+        mem5_email: this.newparticpant.mem5_email
       }).then(() => {
         console.log('done');
         this.newparticpant = {};
