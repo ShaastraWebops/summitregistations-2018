@@ -13,6 +13,7 @@ var ParticipantSchema = new mongoose.Schema({
   resumeurl: {type: String, required: false},
   q1_ans: {type: String, required:false},
   q2_ans: {type: String, required:false},
+  resume: {type: String},
   team_name: String,
   mem1_name: String,
   mem1_email: String,
