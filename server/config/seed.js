@@ -6,6 +6,7 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import participant from '../api/participant/participant.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
@@ -44,6 +45,14 @@ export default function seedDatabaseIfNeeded() {
       })
     .then(() => console.log('finished populating things'))
     .catch(err => console.log('error populating things', err));
+
+    participant.find({}).remove()
+        .then(() => {
+          return participant;
+        })
+        .then(() => console.log('finished populating participants'))
+        .catch(err => console.log('error populating participant', err));
+
 
     User.find({}).remove()
       .then(() => {
