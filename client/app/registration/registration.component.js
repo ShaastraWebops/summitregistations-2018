@@ -6,10 +6,28 @@ const uiRouter = require('angular-ui-router');
 import routes from './registration.routes';
 
 export class RegistrationComponent {
+
+  
   /*@ngInject*/
-  constructor() {
-    this.message = 'Hello';
+  socket;
+  
+steps=[];
+
+  constructor($scope,socket) {
+    
+    this.socket = socket;
+    this.$scope = $scope;
+    $scope.$on('$destroy', function() {
+      socket.unsyncUpdates('registration');
+    });
   }
+
+  $onInit() {
+    step=1;
+  }
+
+ 
+       
 }
 
 export default angular.module('summitregistations2018App.registration', [uiRouter])

@@ -1,1 +1,85 @@
-<div>This is the registration view.</div>
+<form method="post" novalidate>
+<div id="progress">
+	 <!-- progressbar -->
+    <ul id="progressbar">
+      <li class="active">Personal Details</li>
+      <li>Questionnare</li>
+      <li>Contact Details</li>
+      <li>Team Details</li>
+      <li>Final step</li>
+    </ul>
+    <!-- fieldsets -->
+</div>
+  <div id="msform" ng-init="step=1" >
+   
+    <fieldset ng-show="step==1">
+      <h2 class="fs-title">Summit Registration Form</h2>
+      <h3 class="fs-subtitle">Personal Details</h3>
+      <i class="glyphicon glyphicon-user" style="color: black"></i>
+      <label>Name</label>
+      <input type="text" name="Name" placeholder="Your Name" />
+      <i class="glyphicon glyphicon-education" style="color: black"></i>
+      <label>Institution Name</label>
+	  <input type="text" name="insti" placeholder="Institution you are studying in" />
+	  <label>Which stream are you pursuing?</label>
+      <input type="text" name="stream" placeholder="Stream" />
+      <label>Resume Upload</label>
+      <input type="text" name="resume_link" placeholder="Upload your Resume in Google Drive and paste the shareable link below"/>
+      <i class="glyphicon glyphicon-next" style="color: black"></i>
+	  <Button  class="next action-button" ng-click="step=2" >Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
+    </fieldset>
+    
+    <fieldset ng-show="step==2">
+      <h2 class="fs-title">Questionnare</h2>
+      <h3 class="fs-subtitle">Rural Energy Challenge</h3>
+      <label>What track would you like to work upon? (Eg: Smartvillage, Transport, Household Electricity)</label>
+      <input type="text" name="work_upon" placeholder="Explain on what you like to work on" />
+      <label>Have you done any prior work in the above mentioned field ? If so, tell us about it. (No problem if you haven't.)</label>
+      <input type="text" name="experience" placeholder="Share your Experience" />
+      <label>“It’s not about ideas. It’s about making ideas happen.” - Scott Belsky, co-founder of Behance. We wish you all the best in executing your ideas!</label>
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=1">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></Button>      
+      <button type="button"  class="next action-button"  ng-click="step=3" value="Next">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
+     
+    </fieldset>
+    
+    <fieldset ng-show="step==3">
+      <h2 class="fs-title">Contact Details</h2>
+      <h3 class="fs-subtitle">We will never sell it</h3>
+      <label>Email ID (Don't worry, we send no spam) </label>
+      <input type="email" name="email" placeholder="Enter your Email-id" />
+      <label>Mobile Number</label>
+      <input type="text" name="mobno" placeholder="Your Mobile number" />
+      <label>Alternative Mobile Number (Preferably of a team mate)</label>
+      <input type="text" name="alt_mobno" placeholder="Alternate Mobile number" />
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>      
+      <button type="button"  class="next action-button" value="Next" ng-click="step=4">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+    </fieldset>
+
+    <fieldset ng-show="step==4">
+      <h2 class="fs-title">Team Details</h2>
+      <h3 class="fs-subtitle">Team Work leads to success!</h3>
+      <label>Team Name</label>
+      <input type="text" name="team_name" placeholder="Team Name" />
+      <label>Team Members and their email IDs ( Maximum 5 members including you)</label><br>
+      <label>Member 1</label>
+      <input type="text" name="mem_1_name" placeholder="Name " />
+      <input type="email" name="mem_1_email" placeholder="Enter the Email-id" />
+      <label>Member 2</label>
+      <input type="text" name="mem_2_name" placeholder="Name " />
+      <input type="email" name="mem_2_email" placeholder="Enter the Email-id" />
+      <label>Member 3</label>
+      <input type="text" name="mem_3_name" placeholder="Name " />
+      <input type="email" name="mem_3_email" placeholder="Enter the Email-id" />
+      <label>Member 4</label>
+      <input type="text" name="mem_4_name" placeholder="Name " />
+      <input type="email" name="mem_4_email" placeholder="Enter the Email-id" />
+      <label>Member 5</label>
+      <input type="text" name="mem_5_name" placeholder="Name " />
+      <input type="email" name="mem_5_email" placeholder="Enter the Email-id" />
+
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=3">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>      
+      <button type="button"  class="submit action-button" value="submit" ng-click="$ctrl.submitform()">Submit</button>
+    </fieldset>
+ 
+  </div>
+</form>
