@@ -12,7 +12,7 @@
     <!-- fieldsets -->
 </div>
   <div id="msform" ng-init="step=1" >
-   
+
     <fieldset ng-show="step==1">
       <h2 class="fs-title">Summit Registration Form</h2>
       <h3 class="fs-subtitle">Personal Details</h3>
@@ -25,11 +25,17 @@
 	  <label>Which stream are you pursuing?</label>
       <input type="text" name="stream" placeholder="Stream" ng-model="registrationCtrl.newparticipant.stream" />
       <label>Resume Upload</label>
-      <input type="text" name="resume_link" placeholder="Upload your Resume in Google Drive and paste the shareable link below" ng-model="registrationCtrl.newparticipant.resumeurl"/>
-      <i class="glyphicon glyphicon-next" style="color: black"></i>
+      <br>
+      <label class="custom-file-upload">
+            <input class="form-control" name="file" onchange="document.getElementById('file_name').value = this.value.split('\\').pop().split('/').pop()" type="file" id="file" style="display: none;"/>
+                Click Here to upload proof
+                <input type="text" class="display: inline-block;" name="file_name" id="file_name">
+            </label>
+      <br>
+    <i class="glyphicon glyphicon-next" style="color: black"></i>
 	  <Button  class="next action-button" ng-click="step=2" >Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
     </fieldset>
-    
+
     <fieldset ng-show="step==2">
       <h2 class="fs-title">Questionnare</h2>
       <h3 class="fs-subtitle">Rural Energy Challenge</h3>
@@ -38,11 +44,11 @@
       <label>Have you done any prior work in the above mentioned field ? If so, tell us about it. (No problem if you haven't.)</label>
       <input type="text" name="experience" placeholder="Share your Experience" ng-model="registrationCtrl.newparticipant.q2_ans" />
       <label>“It’s not about ideas. It’s about making ideas happen.” - Scott Belsky, co-founder of Behance. We wish you all the best in executing your ideas!</label>
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=1">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></Button>      
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=1">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></Button>
       <button type="button"  class="next action-button"  ng-click="step=3" value="Next">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
-     
+
     </fieldset>
-    
+
     <fieldset ng-show="step==3">
       <h2 class="fs-title">Contact Details</h2>
       <h3 class="fs-subtitle">We will never sell it</h3>
@@ -52,7 +58,7 @@
       <input type="text" name="mobno" placeholder="Your Mobile number" ng-model="registrationCtrl.newparticipant.mobile_no" />
       <label>Alternative Mobile Number (Preferably of a team mate)</label>
       <input type="text" name="alt_mobno" placeholder="Alternate Mobile number" ng-model="registrationCtrl.newparticipant.alt_mobno" />
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>      
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
       <button type="button"  class="next action-button" value="Next" ng-click="step=4">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
     </fieldset>
 
@@ -78,10 +84,10 @@
       <input type="text" name="mem5_name" placeholder="Name"ng-model="registrationCtrl.newparticipant.mem5_name" />
       <input type="email" name="mem5_email" placeholder="Enter the Email-id" ng-model="registrationCtrl.newparticipant.mem5_email" />
 
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=3">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>      
-      
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=3">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
+
       <button  class="submit action-button" value="submit" ng-click ="registrationCtrl.submitform()" >Submit</button>
     </fieldset>
- 
+
   </div>
 </form>

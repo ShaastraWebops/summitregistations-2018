@@ -62,12 +62,26 @@ export class RegistrationComponent {
         mem4_email: this.newparticpant.mem4_email,
         mem5_name: this.newparticpant.mem5_name,
         mem5_email: this.newparticpant.mem5_email
-      }).then(() => {
+      }).then(data => {
+        var formData = new FormData;
+                var file = $('#file')[0].files[0];
+                console.log(file);
+                formData.append('uploadedFile', file);
+                this.$http.post('/api/uploads/' + data.data._id , formData, {
+
+                  transformRequest: angular.identity,
+                  headers: {
+                    'Content-Type': undefined
+                  }
+                }).then(response => {
+                  angular.element("input[name='file']").val(null);
+                  angular.element("input[name='file_name']").val(null);
+                });
         console.log('done');
         this.newparticpant = {};
       });
   }
-       
+
 }
 
 export default angular.module('summitregistations2018App.registration', [uiRouter])
