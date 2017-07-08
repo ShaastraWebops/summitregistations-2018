@@ -7,6 +7,8 @@ import routes from './registration.routes';
 
 export class RegistrationComponent {
 
+  members = [];
+
   constructor($http) {
         'ngInject';
 
@@ -21,17 +23,7 @@ export class RegistrationComponent {
         resumeurl: '',
         q1_ans: '',
         q2_ans: '',
-        team_name: '',
-        mem1_name: '',
-        mem1_email: '',
-        mem2_name: '',
-        mem2_email: '',
-        mem3_name: '',
-        mem3_email: '',
-        mem4_name: '',
-        mem4_email: '',
-        mem5_name: '',
-        mem5_email: ''
+        team_name: ''
     };
     this.submitted = false;
   }
@@ -53,16 +45,12 @@ export class RegistrationComponent {
         q1_ans: this.newparticipant.q1_ans,
         q2_ans: this.newparticipant.q2_ans,
         team_name: this.newparticipant.team_name,
-        mem1_name: this.newparticipant.mem1_name,
-        mem1_email: this.newparticipant.mem1_email,
-        mem2_name: this.newparticipant.mem2_name,
-        mem2_email: this.newparticipant.mem2_email,
-        mem3_name: this.newparticipant.mem3_name,
-        mem3_email: this.newparticipant.mem3_email,
-        mem4_name: this.newparticipant.mem4_name,
-        mem4_email: this.newparticipant.mem4_email,
-        mem5_name: this.newparticipant.mem5_name,
-        mem5_email: this.newparticipant.mem5_email
+        members.push(
+          {name:this.newparticipant.mem1_name,email:this.newparticipant.mem1_email},
+          {name:this.newparticipant.mem2_name,email:this.newparticipant.mem2_email},
+          {name:this.newparticipant.mem3_name,email:this.newparticipant.mem3_email},
+          {name:this.newparticipant.mem4_name,email:this.newparticipant.mem4_email},
+          {name:this.newparticipant.mem5_name,email:this.newparticipant.mem5_email})
       }).then(data => {
         var formData = new FormData;
                 var file = $('#file')[0].files[0];
