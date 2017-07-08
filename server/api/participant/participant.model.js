@@ -15,17 +15,8 @@ var ParticipantSchema = new mongoose.Schema({
   q2_ans: {type: String, required:false},
   resume: {type: String},
   team_name: String,
-  mem1_name: String,
-  mem1_email: String,
-  mem2_name: {type: String, required:false},
-  mem2_email: {type: String, required:false},
-  mem3_name: {type: String, required:false},
-  mem3_email: {type: String, required:false},
-  mem4_name: {type: String, required:false},
-  mem4_email: {type: String, required:false},
-  mem5_name: {type: String, required:false},
-  mem5_email: {type: String, required:false},
-});
+  members:[{name:String,email:String}]
+  });
 
 registerEvents(ParticipantSchema);
 export default mongoose.model('Participant', ParticipantSchema);

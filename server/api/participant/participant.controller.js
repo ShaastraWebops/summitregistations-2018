@@ -81,6 +81,7 @@ export function show(req, res) {
 
 // Creates a new Participant in the DB
 export function create(req, res) {
+  //Participant.members.push(req.body.members);
   return Participant.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
