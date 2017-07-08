@@ -4,9 +4,18 @@ body{
   display: flex;
   flex-direction: row;
   font-family: 'Montserrat' , sans-serif;
-  color: white;
   overflow-x: hidden;
   flex-wrap: wrap;
+}
+
+h1, button{
+  color: white;
+}
+
+#entries{
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
 .left{

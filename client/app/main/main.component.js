@@ -9,13 +9,15 @@ export class MainController {
   newThing = '';
 
   /*@ngInject*/
-  constructor($http) {
+  constructor($http, Auth) {
     this.$http = $http;
+    this.isAdmin = Auth.isAdminSync;
   }
 
-  $onInit() {
+  entries(){
+    window.location='/entries';
   }
-
+  
   register(){
     window.location='/registration';
   }
