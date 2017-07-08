@@ -1,0 +1,19 @@
+<div class="container" ng-show="entriesCtrl.isAdmin()" style="margin: auto;">
+	<h1 style="color: black; margin: 5px 5px 5px 10px;">Registrations</h1>
+	<table>
+		<tr>
+			<th>Team Name</th>
+			<th>College</th>
+			<th>Stream</th>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+		<tr ng-repeat='row in entriesCtrl.mem'>
+			<td>{{row.team_name}}</td>
+			<td>{{row.insti}}</td>
+			<td>{{row.stream}}</td>
+			<td>{{row.name}}</td>
+			<td>{{row.email}}</td>
+		</tr>
+	</table>
+</div>

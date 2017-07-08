@@ -21,6 +21,7 @@ import account from './account';
 import admin from './admin';
 import registration from './registration/registration.component';
 import main from './main/main.component';
+import entries from './entries/entries.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
@@ -28,7 +29,7 @@ import socket from '../components/socket/socket.service';
 import './app.css';
 
 angular.module('summitregistations2018App', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
-  uiRouter, uiBootstrap, _Auth, account, admin, 'validation.match', main,registration,
+  uiRouter, uiBootstrap, _Auth, account, admin, 'validation.match', main,registration, entries,
   constants, socket, util
 ])
   .config(routeConfig)
