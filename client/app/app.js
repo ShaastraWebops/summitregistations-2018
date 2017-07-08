@@ -5,6 +5,7 @@ import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
+import ngFilesaver from 'angular-file-saver';
 
 import 'angular-socket-io';
 
@@ -28,7 +29,7 @@ import socket from '../components/socket/socket.service';
 
 import './app.css';
 
-angular.module('summitregistations2018App', [ngCookies, ngResource, ngSanitize, 'btford.socket-io',
+angular.module('summitregistations2018App', [ngCookies, ngFilesaver, ngResource, ngSanitize, 'btford.socket-io',
   uiRouter, uiBootstrap, _Auth, account, admin, 'validation.match', main,registration, entries,
   constants, socket, util
 ])

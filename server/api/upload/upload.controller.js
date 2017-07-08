@@ -10,9 +10,13 @@ var storage = multer.diskStorage({
     cb(null, 'client/assets/uploads')
   },
   filename: function(req, file, cb) {
-
-    saveWithName = file.fieldname + '-' + Date.now() + "." + file.originalname.split('.').pop();
-    cb(null, saveWithName)
+    if(!file.originalname.match(/\.(pdf)$/)){
+      var err = new Error();
+      err.code='filetype';
+      return cb(err);
+    } else {
+      saveWithName = file.fieldname + '-' + Date.now() + "." + file.originalname.split('.').pop();
+      cb(null, saveWithName)    }
   }
 });
 

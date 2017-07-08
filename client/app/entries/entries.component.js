@@ -7,8 +7,10 @@ import routes from './entries.routes';
 
 export class EntriesComponent {
   /*@ngInject*/
-  constructor($http, Auth) {
+  constructor($http, Auth, $scope, FileSaver) {
     this.$http = $http;
+    this.$scope = $scope;
+        this.FileSaver = FileSaver;
     this.isAdmin = Auth.isAdminSync;
   }
 
@@ -18,7 +20,19 @@ export class EntriesComponent {
       console.log(this.data);
     })
   }
+  download = function(name,team) {
+    this.$http.get('/file/'+ name,{ responseType: "arraybuffer"  }).then(response => {
+      var blob = new Blob([response.data], { type: "application/pdf"});
+    this.FileSaver.saveAs(blob, team + ".pdf");
+    });
+  }
 }
+
+/*download() {
+
+  var data = new Blob([response.data], { type: 'application/pdf;charset=utf-8' });
+        this.FileSaver.saveAs(data, 'resume'+this.mem.team_name);
+}*/
 
 export default angular.module('summitregistations2018App.entries', [uiRouter])
   .config(routes)
