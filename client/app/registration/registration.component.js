@@ -33,6 +33,7 @@ export class RegistrationComponent {
         mem5_name: '',
         mem5_email: ''
     };
+    this.submitted = false;
   }
 
   $onInit() {
@@ -40,6 +41,7 @@ export class RegistrationComponent {
   }
 
  submitform(){
+  this.submitted = true;
       this.$http.post('/api/participants', {
         name: this.newparticipant.name,
         insti: this.newparticipant.insti,
@@ -91,6 +93,6 @@ export default angular.module('summitregistations2018App.registration', [uiRoute
   .component('registration', {
     template: require('./registration.html'),
     controller: RegistrationComponent,
-    controllerAs: 'registrationCtrl'
+    controllerAs: 'ctrl'
   })
   .name;
