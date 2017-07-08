@@ -70,7 +70,8 @@ export class RegistrationComponent {
                   angular.element("input[name='file']").val(null);
                   angular.element("input[name='file_name']").val(null);
                 });
-        
+        window.alert('Registered Successfully!');
+        window.location = '/';
       });
   }
 
