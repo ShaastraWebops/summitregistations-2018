@@ -7,13 +7,41 @@
 			<th>Stream</th>
 			<th>Name</th>
 			<th>Email</th>
+			<th>Mobile No</th>
+			<th>Sub Category</th>
+			<th>Experience</th>
+			<th>Resume</th>
 		</tr>
 		<tr ng-repeat='row in entriesCtrl.mem'>
-			<td>{{row.team_name}}</td>
-			<td>{{row.insti}}</td>
-			<td>{{row.stream}}</td>
-			<td>{{row.name}}</td>
-			<td>{{row.email}}</td>
+			<td class="main">{{row.team_name}}</td>
+			<td class="main">{{row.insti}}</td>
+			<td class="main">{{row.stream}}</td>
+			<td class="main">
+				<table>
+					<tr ng-repeat="member in row.members">
+						<td>{{member.name}}</td>
+					</tr>
+				</table>
+			</td>
+			<td class="main">
+				<table>
+					<tr ng-repeat="member in row.members">
+						<td>{{member.email}}</td>
+					</tr>
+				</table>
+			</td>
+			<td class="main">
+				{{row.mobile_no}}<br/>{{row.alt_mobno}}
+			</td>
+			<td class="main">
+				{{row.q1_ans}}
+			</td>
+			<td class="main">
+				{{row.q2_ans}}
+			</td>
+			<td class="main">
+				{{row.resume}}
+			</td>
 		</tr>
 	</table>
 </div>

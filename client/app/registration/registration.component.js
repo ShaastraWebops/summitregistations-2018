@@ -14,16 +14,16 @@ export class RegistrationComponent {
 
     this.$http = $http;
     this.newparticipant = {
-      name: 'gokulan',
+        name: '',
         insti: '',
         stream: '',
         mobile_no: '',
         alt_mobno: '',
         email: '',
-        resumeurl: '',
         q1_ans: '',
         q2_ans: '',
-        team_name: ''
+        team_name: '',
+        members: []
     };
     this.submitted = false;
   }
@@ -34,23 +34,27 @@ export class RegistrationComponent {
 
  submitform(){
   this.submitted = true;
+  
+  this.members = [];
+  this.members.push({name: this.newparticipant.name, email: this.newparticipant.email});
+  if(this.newparticipant.mem2_name != '')
+    this.members.push({name: this.newparticipant.mem2_name, email: this.newparticipant.mem2_email});
+  if(this.newparticipant.mem3_name != '')
+    this.members.push({name: this.newparticipant.mem3_name, email: this.newparticipant.mem3_email});
+  if(this.newparticipant.mem4_name != '')
+    this.members.push({name: this.newparticipant.mem4_name, email: this.newparticipant.mem4_email});
+  if(this.newparticipant.mem5_name != '')
+    this.members.push({name: this.newparticipant.mem5_name, email: this.newparticipant.mem5_email});
+      
       this.$http.post('/api/participants', {
-        name: this.newparticipant.name,
         insti: this.newparticipant.insti,
         stream: this.newparticipant.stream,
         mobile_no: this.newparticipant.mobile_no,
         alt_mobno: this.newparticipant.alt_mobno,
-        email: this.newparticipant.email,
-        resumeurl: this.newparticipant.resumeurl,
         q1_ans: this.newparticipant.q1_ans,
         q2_ans: this.newparticipant.q2_ans,
         team_name: this.newparticipant.team_name,
-        members.push(
-          {name:this.newparticipant.mem1_name,email:this.newparticipant.mem1_email},
-          {name:this.newparticipant.mem2_name,email:this.newparticipant.mem2_email},
-          {name:this.newparticipant.mem3_name,email:this.newparticipant.mem3_email},
-          {name:this.newparticipant.mem4_name,email:this.newparticipant.mem4_email},
-          {name:this.newparticipant.mem5_name,email:this.newparticipant.mem5_email})
+        members: this.members
       }).then(data => {
         var formData = new FormData;
                 var file = $('#file')[0].files[0];
@@ -71,9 +75,6 @@ export class RegistrationComponent {
       });
   }
 
-  changes(){
-    console.log(this.newparticipant.name);
-  }
 }
 
 export default angular.module('summitregistations2018App.registration', [uiRouter])
