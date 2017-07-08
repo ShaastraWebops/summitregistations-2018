@@ -30,6 +30,12 @@
   position: relative;
 
 }
+div{
+  width: 100%;
+}
+input{
+  width: 90%;
+}
 #upload{
     box-shadow: 0 0 0 2px white inset;
     border: 1px solid white;

@@ -23,7 +23,7 @@
      <label class="control-label">Which stream are you pursuing?</label>
       <input type="text" class="form-control" name="stream" ng-required="true" placeholder="Stream" ng-model="ctrl.newparticipant.stream" />
       <p class="help-block" ng-show="theform.stream.$error.required && theform.stream.$touched">
-        This field is requiredam
+        This field is required
       </p>
       </div>
   <div class="input-group" ng-class="{'has-error':!theform.file.$valid && !theform.file.$untouched,'has-success':theform.file.$valid}" >
@@ -89,13 +89,13 @@
           Enter a Valid Mobile No. thats is 10-Digit long
       </p>
       </div>
-      <div class="input-group has-feedback" ng-class="{'has-error':!theform.alt_mobno.$valid,'has-success':theform.alt_mobno.$valid && theform.alt_mobno.$dirty}" >
+      <div class="input-group has-feedback" ng-class="{'has-error':!theform.alt_mobno.$valid && !theform.alt_mobno.$error.required,'has-success':theform.alt_mobno.$valid && theform.alt_mobno.$dirty}" >
       <label class="control-label">Alternative Mobile Number (Preferably of a team mate)</label>
-      <input type="text" name="alt_mobno" placeholder="Alternate Mobile number" class="form-control" ng-pattern="/^[0-9]{10}$/" ng-model="ctrl.newparticipant.alt_mobno" />
+      <input type="text" name="alt_mobno"  ng-required="true" placeholder="Alternate Mobile number" class="form-control" ng-pattern="/^[0-9]{10}$/" ng-model="ctrl.newparticipant.alt_mobno" />
 
       <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.alt_mobno.$valid , 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.alt_mobno.$valid && (!theform.alt_mobno.$pristine || theform.alt_mobno.$touched)}">
       </div>
-      <p class="help-block" ng-show="theform.alt_mobno.$invalid">
+      <p class="help-block" ng-show="!theform.alt_mobno.$error.required  && theform.alt_mobno.$invalid ">
           Enter a Valid Mobile No. thats is 10-Digit long
       </p>
       <br />
@@ -107,42 +107,98 @@
       <h2 class="fs-title">Team Details</h2>
       <h3 class="fs-subtitle">Team Work leads to success!</h3>
   <div class="input-group" ng-class="{'has-error':!theform.team_name.$valid && !theform.team_name.$untouched,'has-success':theform.team_name.$valid}" >
-      <label>Team Name</label>
-      <input type="text" name="team_name" ng-required="true" placeholder="Team Name" ng-model="ctrl.newparticipant.team_name" />
-      <p class="help-block" ng-show="theform.ClgName.$error.required && theform.ClgName.$touched">
+      <label class="control-label">Team Name</label>
+      <input type="text" name="team_name" class="form-control" ng-required="true" placeholder="Team Name" ng-model="ctrl.newparticipant.team_name" />
+      <p class="help-block" ng-show="theform.team_name.$error.required && theform.team_name.$touched">
         This field is required
       </p>
       </div>
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <label>Team Members and their email IDs ( Maximum 5 members including you)</label><br>
-      <label>Member 1</label>
-      <input type="text" name="mem1_name" placeholder="Name " ng-model="ctrl.newparticipant.mem1_name"/>
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <input type="email" name="mem1_email" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem1_email" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <label>Member 2</label>
-      <input type="text" name="mem2_name" placeholder="Name " ng-model="ctrl.newparticipant.mem2_name" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <input type="email" name="mem2_email" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem2_email" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <label>Member 3</label>
-      <input type="text" name="mem3_name" placeholder="Name" ng-model="ctrl.newparticipant.mem3_name" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <input type="email" name="mem3_email" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem3_email" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <label>Member 4</label>
-      <input type="text" name="mem4_name" placeholder="Name" ng-model="ctrl.newparticipant.mem4_name" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <input type="email" name="mem4_email" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem4_email"/>
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <label>Member 5</label>
-      <input type="text" name="mem5_name" placeholder="Name"ng-model="ctrl.newparticipant.mem5_name" />
-  <div class="input-group" ng-class="{'has-error':!theform.ClgState.$valid && !theform.ClgState.$untouched,'has-success':theform.ClgState.$valid}" >
-      <input type="email" name="mem5_email" placeholder="Enter the Email-id" ng-model="ctrl.newparticipant.mem5_email" />
+      <label>Team Members and their email IDs ( Maximum 5 members including you)</label><br/>
+      <div class="input-group" >
+      <label class="control-label">Member 1</label><br/>
+      <input type="text" name="mem1_name" class="form-control" placeholder="Name" ng-model="ctrl.newparticipant.name" disabled="true"/>
+  <div class="input-group" >
+      <input type="text" name="mem1_email"  class="form-control" placeholder="Please go back to previous step and fill the Email-ID there" ng-model="ctrl.newparticipant.email" disabled="true"/>
+    </div>
+  <div class="input-group " ng-class="{'has-error':!theform.mem2_email.$valid && !theform.mem2_name.$error.required && (!theform.mem2_email.$pristine || theform.mem2_email.$touched),'has-success':theform.mem2_email.$valid && theform.mem2_email.$dirty}" >
+      <label class="control-label">Member 2</label>
+      <input type="text" name="mem2_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem2_name" />
+    </div>
+  <div class="input-group has-feedback" ng-class="{'has-error': (!theform.mem2_name.$error.required  && theform.mem2_email.$untouched)  || (!theform.mem2_email.$valid),'has-success':theform.mem2_email.$valid && !theform.mem2_email.$error.required && !theform.mem2_name.$error.required}" >
+      <input type="email" name="mem2_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem2_email" />
+      <p class="help-block" ng-show=" theform.mem2_email.$error.required && !theform.mem2_name.$error.required">
+        The Email of the member is required
+      </p>
+      <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.mem2_email.$valid && theform.mem2_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.mem2_email.$valid && (!theform.mem2_email.$pristine || theform.mem2_email.$touched)}">
+      </div>
 
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=3">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
+      <p class="help-block" ng-show="theform.mem2_email.$invalid && theform.mem2_email.$dirty">
+          Please Enter a valid E-Mail ID
+      </p>
+    </div>
 
-      <button  class="submit action-button" value="submit" ng-click ="ctrl.submitform()" >Submit</button>
+
+
+
+    <div class="input-group " ng-class="{'has-error':!theform.mem3_email.$valid && !theform.mem3_name.$error.required && (!theform.mem3_email.$pristine || theform.mem3_email.$touched),'has-success':theform.mem3_email.$valid && theform.mem3_email.$dirty}" >
+        <label class="control-label">Member 3</label>
+        <input type="text" name="mem3_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem3_name" />
+      </div>
+    <div class="input-group has-feedback" ng-class="{'has-error': (!theform.mem3_name.$error.required  && theform.mem3_email.$untouched)  || (!theform.mem3_email.$valid),'has-success':theform.mem3_email.$valid && !theform.mem3_email.$error.required && !theform.mem3_name.$error.required}" >
+        <input type="email" name="mem3_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem3_email" />
+        <p class="help-block" ng-show=" theform.mem3_email.$error.required && !theform.mem3_name.$error.required">
+          The Email of the member is required
+        </p>
+        <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.mem3_email.$valid && theform.mem3_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.mem3_email.$valid && (!theform.mem3_email.$pristine || theform.mem3_email.$touched)}">
+        </div>
+
+        <p class="help-block" ng-show="theform.mem3_email.$invalid && theform.mem3_email.$dirty">
+            Please Enter a valid E-Mail ID
+        </p>
+      </div>
+
+
+      <div class="input-group " ng-class="{'has-error':!theform.mem4_email.$valid && !theform.mem4_name.$error.required && (!theform.mem4_email.$pristine || theform.mem4_email.$touched),'has-success':theform.mem4_email.$valid && theform.mem4_email.$dirty}" >
+          <label class="control-label">Member 4</label>
+          <input type="text" name="mem4_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem4_name" />
+        </div>
+      <div class="input-group has-feedback" ng-class="{'has-error': (!theform.mem4_name.$error.required  && theform.mem4_email.$untouched)  || (!theform.mem4_email.$valid),'has-success':theform.mem4_email.$valid && !theform.mem4_email.$error.required && !theform.mem4_name.$error.required}" >
+          <input type="email" name="mem4_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem4_email" />
+          <p class="help-block" ng-show=" theform.mem4_email.$error.required && !theform.mem4_name.$error.required">
+            The Email of the member is required
+          </p>
+          <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.mem4_email.$valid && theform.mem4_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.mem4_email.$valid && (!theform.mem4_email.$pristine || theform.mem4_email.$touched)}">
+          </div>
+
+          <p class="help-block" ng-show="theform.mem4_email.$invalid && theform.mem4_email.$dirty">
+              Please Enter a valid E-Mail ID
+          </p>
+        </div>
+
+        <div class="input-group " ng-class="{'has-error':!theform.mem5_email.$valid && !theform.mem5_name.$error.required && (!theform.mem5_email.$pristine || theform.mem5_email.$touched),'has-success':theform.mem5_email.$valid && theform.mem5_email.$dirty}" >
+            <label class="control-label">Member 5</label>
+            <input type="text" name="mem5_name" ng-required="true" class="form-control" placeholder="Name " ng-model="ctrl.newparticipant.mem5_name" />
+          </div>
+        <div class="input-group has-feedback" ng-class="{'has-error': (!theform.mem5_name.$error.required  && theform.mem5_email.$untouched)  || (!theform.mem5_email.$valid),'has-success':theform.mem5_email.$valid && !theform.mem5_email.$error.required && !theform.mem5_name.$error.required}" >
+            <input type="email" name="mem5_email" ng-required="true" class="form-control" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" placeholder="Enter the Email-id"ng-model="ctrl.newparticipant.mem5_email" />
+            <p class="help-block" ng-show=" theform.mem5_email.$error.required && !theform.mem5_name.$error.required">
+              The Email of the member is required
+            </p>
+            <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.mem5_email.$valid && theform.mem5_email.$dirty, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.mem5_email.$valid && (!theform.mem5_email.$pristine || theform.mem5_email.$touched)}">
+            </div>
+
+            <p class="help-block" ng-show="theform.mem5_email.$invalid && theform.mem5_email.$dirty">
+                Please Enter a valid E-Mail ID
+            </p>
+          </div>
+
+
+
+
+
+      <button type="button" class="previous action-button" value="Previous" ng-disabled="true" ng-click="step=3">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
+
+      <button  class="submit action-button" value="submit" ng-disabled="true" ng-click ="ctrl.submitform()"  >Submit</button>
     </fieldset>
 
   </div>
