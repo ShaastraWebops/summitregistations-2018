@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Participant from './participant.model';
+var json2csv = require('json2csv');
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -84,6 +85,64 @@ export function create(req, res) {
   //Participant.members.push(req.body.members);
   return Participant.create(req.body)
     .then(respondWithResult(res, 201))
+    .catch(handleError(res));
+}
+
+export function exp(req, res) {
+  console.log("HI");
+  return Participant.find({}).exec()
+    .then(participants => {
+      for(var i=0;i<participants.length;i++)
+      {
+        participants[i].resume = participants[i].team_name + '.pdf';   //As resume files are downloaded with the name as the team_name
+      }
+
+      var fields = ['insti','stream','mobile_no','alt_mobno','q1_ans','q2_ans','resume','team_name',
+      {
+        label: 'Member 1: Name',
+        value: 'member_names[0]'
+      },
+      {
+        label: 'Member 1: Email',
+        value: 'member_emails[0]'
+      },
+      {
+        label: 'Member 2: Name',
+        value: 'member_names[1]'
+      },
+      {
+        label: 'Member 2: Email',
+        value: 'member_emails[1]'
+      },
+      {
+        label: 'Member 3: Name',
+        value: 'member_names[2]'
+      },
+      {
+        label: 'Member 3: Email',
+        value: 'member_emails[2]'
+      },
+      {
+        label: 'Member 4: Name',
+        value: 'member_names[3]'
+      },
+      {
+        label: 'Member 4: Email',
+        value: 'member_emails[3]'
+      },
+      {
+        label: 'Member 5: Name',
+        value: 'member_names[4]'
+      },
+      {
+        label: 'Member 5: Email',
+        value: 'member_emails[4]'
+      }];
+      var csv = json2csv({ data: participants, fields: fields});
+      res.setHeader('Content-disposition', 'attachment; filename=participants.csv');
+      res.set('Content-Type', 'text/csv');
+      res.status(200).send(csv);
+    })
     .catch(handleError(res));
 }
 

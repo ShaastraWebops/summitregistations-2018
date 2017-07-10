@@ -23,7 +23,8 @@ export class RegistrationComponent {
         q1_ans: '',
         q2_ans: '',
         team_name: '',
-        members: []
+        member_names: [],
+        member_emails: []
     };
     this.submitted = false;
   }
@@ -34,18 +35,32 @@ export class RegistrationComponent {
 
  submitform(){
   this.submitted = true;
-  
-  this.members = [];
-  this.members.push({name: this.newparticipant.name, email: this.newparticipant.email});
-  if(this.newparticipant.mem2_name != '')
-    this.members.push({name: this.newparticipant.mem2_name, email: this.newparticipant.mem2_email});
-  if(this.newparticipant.mem3_name != '')
-    this.members.push({name: this.newparticipant.mem3_name, email: this.newparticipant.mem3_email});
-  if(this.newparticipant.mem4_name != '')
-    this.members.push({name: this.newparticipant.mem4_name, email: this.newparticipant.mem4_email});
-  if(this.newparticipant.mem5_name != '')
-    this.members.push({name: this.newparticipant.mem5_name, email: this.newparticipant.mem5_email});
-      
+
+  this.names = [];
+  this.emails = [];
+  this.names.push(this.newparticipant.name);
+  this.emails.push(this.newparticipant.email);
+  if(this.newparticipant.mem2_name != null)
+    {
+      this.names.push(this.newparticipant.mem2_name);
+      this.emails.push(this.newparticipant.mem2_email);
+    }
+  if(this.newparticipant.mem3_name != null)
+  {
+    this.names.push(this.newparticipant.mem3_name);
+    this.emails.push(this.newparticipant.mem3_email);
+  }
+  if(this.newparticipant.mem4_name != null)
+  {
+    this.names.push(this.newparticipant.mem4_name);
+    this.emails.push(this.newparticipant.mem4_email);
+  }
+  if(this.newparticipant.mem5_name != null)
+  {
+    this.names.push(this.newparticipant.mem5_name);
+    this.emails.push(this.newparticipant.mem5_email);
+  }
+
       this.$http.post('/api/participants', {
         insti: this.newparticipant.insti,
         stream: this.newparticipant.stream,
@@ -54,7 +69,8 @@ export class RegistrationComponent {
         q1_ans: this.newparticipant.q1_ans,
         q2_ans: this.newparticipant.q2_ans,
         team_name: this.newparticipant.team_name,
-        members: this.members
+        member_names: this.names,
+        member_emails: this.emails
       }).then(data => {
         var formData = new FormData;
                 var file = $('#file')[0].files[0];

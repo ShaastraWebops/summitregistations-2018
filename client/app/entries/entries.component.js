@@ -26,6 +26,12 @@ export class EntriesComponent {
     this.FileSaver.saveAs(blob, team + ".pdf");
     });
   }
+  exp = function() {
+     this.$http.get('/api/participants/export').then(response => {
+       var data = new Blob([response.data], { type: 'text/csv;charset=utf-8' });
+       this.FileSaver.saveAs(data, 'participants.csv');
+     });
+   }
 }
 
 /*download() {

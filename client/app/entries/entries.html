@@ -1,5 +1,8 @@
 <div class="container" ng-show="entriesCtrl.isAdmin()" style="margin: auto;">
 	<h1 style="color: black; margin: 5px 5px 5px 10px;">Registrations</h1>
+	<button class="btn btn-default" ng-click="entriesCtrl.exp();"> Export as .csv file </button>
+	<br>
+	<br>
 	<table>
 		<tr>
 			<th>Team Name</th>
@@ -40,7 +43,7 @@
 				{{row.q2_ans}}
 			</td>
 			<td class="main">
-       <button ng-click="entriesCtrl.download(row.resume,row.team_name)">Click here to download resume</button></td>
+       <button class="btn btn-primary" ng-click="entriesCtrl.download(row.resume,row.team_name)">Click here to download resume</button></td>
 		</tr>
 	</table>
 </div>

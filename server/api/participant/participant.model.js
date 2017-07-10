@@ -7,12 +7,13 @@ var ParticipantSchema = new mongoose.Schema({
   insti: String,
   stream: String,
   mobile_no: String,
-  alt_mobno: {type: String, required:false},
-  q1_ans: {type: String, required:false},
-  q2_ans: {type: String, required:false},
+  alt_mobno: {type: String, required:false, default: "Not Provided"},
+  q1_ans: {type: String, required:false, default: "Not Provided"},
+  q2_ans: {type: String, required:false, default: "Not Provided"},
   resume: {type: String},
   team_name: String,
-  members:[{name:String,email:String}]
+  member_names:[String],
+  member_emails:[String]
   });
 
 registerEvents(ParticipantSchema);
