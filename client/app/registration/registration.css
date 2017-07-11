@@ -30,26 +30,32 @@
   position: relative;
 
 }
+
 div{
   width: 100%;
 }
+
 input{
   width: 90%;
 }
+
 #upload{
     box-shadow: 0 0 0 2px white inset;
     border: 1px solid white;
     padding: 10px;
 }
+
 #upload:hover{
   border-radius: 2px;
   border: 1px solid #27AE60;
 }
+
 label{
     text-align: left;
     color: #444;
     text-decoration: none;
 }
+
 #msform {
   margin-top: 50px;
   text-align: left;
