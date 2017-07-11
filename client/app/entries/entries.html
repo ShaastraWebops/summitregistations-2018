@@ -21,15 +21,15 @@
 			<td class="main">{{row.stream}}</td>
 			<td class="main">
 				<table>
-					<tr ng-repeat="member in row.members">
-						<td>{{member.name}}</td>
+					<tr ng-repeat="member in row.member_names">
+						<td>{{member}}</td>
 					</tr>
 				</table>
 			</td>
 			<td class="main">
 				<table>
-					<tr ng-repeat="member in row.members">
-						<td>{{member.email}}</td>
+					<tr ng-repeat="member in row.member_emails">
+						<td>{{member}}</td>
 					</tr>
 				</table>
 			</td>
