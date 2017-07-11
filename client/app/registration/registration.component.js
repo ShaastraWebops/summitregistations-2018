@@ -4,7 +4,7 @@ const angular = require('angular');
 const uiRouter = require('angular-ui-router');
 
 import routes from './registration.routes';
-
+// const sendgrid = reuqire('sendgrid')('fivune');
 export class RegistrationComponent {
 
   members = [];
