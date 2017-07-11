@@ -70,9 +70,9 @@ label{
 }
 /*Hide all except first fieldset*/
 
-#msform fieldset:(:first-of-type) {
+/*#msform fieldset:(:first-of-type) {
   display:all;
-}
+}*/
 /*inputs*/
 
 #msform input,
