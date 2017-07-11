@@ -33,7 +33,22 @@ export class RegistrationComponent {
   this.step=1;
   }
 
- submitform(){
+  submitform(){
+    this.$http.get('/api/participants').then(res => {
+      this.count = res.data.length+1;
+      if(this.count<10)
+        this.summitID = 'SUM18000'+this.count;
+      else if(this.count<100)
+        this.summitID = 'SUM1800'+this.count;
+      else if(this.count<1000)
+        this.summitID = 'SUM180'+this.count;
+      else if(this.count<10000)
+        this.summitID = 'SUM18'+this.count;
+      this.submit();
+    });
+  }
+
+ submit(){
   this.submitted = true;
 
   this.names = [];
@@ -64,6 +79,7 @@ export class RegistrationComponent {
       this.$http.post('/api/participants', {
         insti: this.newparticipant.insti,
         stream: this.newparticipant.stream,
+        summitID: this.summitID,
         mobile_no: this.newparticipant.mobile_no,
         alt_mobno: this.newparticipant.alt_mobno,
         q1_ans: this.newparticipant.q1_ans,

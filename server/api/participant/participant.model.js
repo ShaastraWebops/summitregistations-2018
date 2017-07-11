@@ -6,6 +6,7 @@ import {registerEvents} from './participant.events';
 var ParticipantSchema = new mongoose.Schema({
   insti: String,
   stream: String,
+  summitID: String,
   mobile_no: String,
   alt_mobno: {type: String, required:false, default: "Not Provided"},
   q1_ans: {type: String, required:false, default: "Not Provided"},
