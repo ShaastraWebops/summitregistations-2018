@@ -13,6 +13,8 @@
 import jsonpatch from 'fast-json-patch';
 import Participant from './participant.model';
 var json2csv = require('json2csv');
+var sendgrid = require("sendgrid")("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");
+
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -83,8 +85,30 @@ export function show(req, res) {
 // Creates a new Participant in the DB
 export function create(req, res) {
   //Participant.members.push(req.body.members);
+  var array = [];
+  array = req.body.member_emails;
   return Participant.create(req.body)
-    .then(respondWithResult(res, 201))
+    .then( data => {
+      var text_body = "Thank you for registering for Shaastra 2018 summit";
+      var params = {
+          to: array,
+          from: 'webops@shaastra.org',
+          cc: 'summitregistrations@shaastra.org',
+          fromname: 'Shaastra WebOps',
+          subject: 'Shaastra 2018 || Summit',
+          text: text_body
+      };
+      var email = new sendgrid.Email(params);
+      sendgrid.send(email, function (err, json) {
+        if(err)
+          console.log('Error sending mail - ', err);
+        else
+          {
+            console.log('Success sending mail - ', json);
+          }
+      });
+      res.json({success: true});
+    })
     .catch(handleError(res));
 }
 

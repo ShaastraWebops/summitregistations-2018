@@ -88,7 +88,7 @@ export class RegistrationComponent {
         member_names: this.names,
         member_emails: this.emails
       }).then(data => {
-        var formData = new FormData;
+        /*var formData = new FormData;
                 var file = $('#file')[0].files[0];
                 console.log(file);
                 formData.append('uploadedFile', file);
@@ -101,9 +101,11 @@ export class RegistrationComponent {
                 }).then(response => {
                   angular.element("input[name='file']").val(null);
                   angular.element("input[name='file_name']").val(null);
-                });
+                });*/
+                if(data.data.success){
         window.alert('Registered Successfully!');
         window.location = '/';
+      }
       });
   }
 
