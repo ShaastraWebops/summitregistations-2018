@@ -13,7 +13,7 @@
 import jsonpatch from 'fast-json-patch';
 import Participant from './participant.model';
 var json2csv = require('json2csv');
-var sendgrid = require("sendgrid")("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");
+var sendgrid = require("sendgrid")("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");
 
 
 function respondWithResult(res, statusCode) {
@@ -89,7 +89,13 @@ export function create(req, res) {
   array = req.body.member_emails;
   return Participant.create(req.body)
     .then( data => {
-      var text_body = "Thank you for registering for Shaastra 2018 summit";
+      var text_body = "Greetings from Summit Team, Shaastra 2018.\n\n"+
+                        "You have successfully registered for this year's Summit.\n"+
+                        "We are reviewing your application and will be reaching out to you shortly.\n"+
+                        "Your Summit ID: "+req.body.summitID+"\n"+
+                        "\nPlease note your summit ID given and include it in all further communications\n"+
+                        "All communications emails should be sent to summitregistrations@shaastra.org\n\n"+
+                        "Thanks,\nSummit Team,\nShaastra, IIT Madras.\n\n\n"
       var params = {
           to: array,
           from: 'webops@shaastra.org',
