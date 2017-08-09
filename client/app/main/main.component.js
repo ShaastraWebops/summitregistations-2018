@@ -3,10 +3,6 @@ import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
 
 export class MainController {
-  $http;
-  socket;
-  awesomeThings = [];
-  newThing = '';
 
   /*@ngInject*/
   constructor($http, Auth) {
@@ -20,6 +16,10 @@ export class MainController {
   
   register(){
     window.location='/registration';
+  }
+
+  openBrochure(){
+    window.open('http://shaastra.org/images/Participant Brochure.pdf', '_blank');
   }
 }
 
