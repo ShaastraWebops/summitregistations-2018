@@ -82,7 +82,6 @@ label{
 
 #msform input,
 #msform textarea {
-  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 10px;
@@ -114,6 +113,7 @@ label{
 
 .fs-title {
   font-size: 15px;
+  font-weight: bold;
   text-transform: uppercase;
   color: #2C3E50;
   margin-bottom: 10px;

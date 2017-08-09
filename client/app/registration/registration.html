@@ -1,27 +1,26 @@
 <form method="post" name="theform" novalidate>
   <div id="msform" ng-init="step=1">
     <fieldset ng-show="step==1">
-      
+
       <h2 class="fs-title">Summit Registration Form</h2>
       <h3 class="fs-subtitle">Personal Details</h3>
-      
+
       <div class="input-group" ng-class="{'has-error':!theform.Name.$valid && !theform.Name.$untouched,'has-success':theform.Name.$valid}" >
         <label class="control-label">
           <i class="glyphicon glyphicon-user" style="float:left">
-          </i> Name**
+          </i> Name *
         </label>
         <input type="text" name="Name" placeholder="Your Name" ng-required="true" ng-model="ctrl.newparticipant.name" class="form-control"/>
         <p class="help-block" ng-show="theform.Name.$error.required && theform.Name.$touched">
           This field is required
         </p>
       </div>
-      
+
       <div class="input-group" ng-class="{'has-error':!theform.insti.$valid && !theform.insti.$untouched,'has-success':theform.insti.$valid}" >
 
         <label class="control-label">
           <i class="glyphicon glyphicon-education" style="float:left">
-          
-          </i> Institution Name**
+          </i> Institution Name *
         </label>
         <input type="text" name="insti" ng-required="true" placeholder="Institution you are studying in" ng-model="ctrl.newparticipant.insti" class="form-control"/>
         <p class="help-block" ng-show="theform.insti.$error.required && theform.insti.$touched">
@@ -30,38 +29,18 @@
       </div>
 
       <div class="input-group" ng-class="{'has-error':!theform.stream.$valid && !theform.stream.$untouched,'has-success':theform.stream.$valid}"  >
-        <label class="control-label">Which stream are you pursuing?**
+        <label class="control-label">Which stream are you pursuing? *
         </label>
         <input type="text" class="form-control" name="stream" ng-required="true" placeholder="Stream" ng-model="ctrl.newparticipant.stream" />
         <p class="help-block" ng-show="theform.stream.$error.required && theform.stream.$touched">
         This field is required
         </p>
       </div>
-  
-      <div class="input-group" ng-class="{'has-error':!theform.file.$valid && !theform.file.$untouched,'has-success':theform.file.$valid}" >
-        <label>Resume Upload</label>
-        <br/>
-        <label class="custom-file-upload control-label" style="background: #27AE60;color:white;float:none" id="upload">
-          <input class="form-control" name="file" ng-required="true" onchange="document.getElementById('file_name').value = this.value.split('\\').pop().split('/').pop()" type="file" id="file" style="display: none;"/>
-                Click Here to upload resume (in pdf only)
-        </label>
-        <input type="text" class="display: inline-block;" name="file_name" id="file_name" placeholder="File Name" disabled>
-        <br>
-        <i class="glyphicon glyphicon-next" style="color: black"></i>
-	       <Button  class="next action-button" ng-click="step=2" >Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
-      </div>
-      
-      <div style="color:rgb(217,83,79);font-size:13px" >
-        the fields marked with ** are required
-      </div>
 
-    </fieldset>
-
-    <fieldset ng-show="step==2">
-      <h2 class="fs-title">Questionnare</h2>
+      <h2 class="fs-title">Questionnaire</h2>
       <h3 class="fs-subtitle">Rural Energy Challenge</h3>
   <div class="input-group" ng-class="{'has-error':!theform.work_upon.$valid && !theform.work_upon.$untouched,'has-success':theform.work_upon.$valid}" >
-      <label class="control-label">What track would you like to work upon? (Eg: Smartvillage, Transport, Household Electricity)**</label>
+      <label class="control-label">What track would you like to work upon? (Eg: Smartvillage, Transport, Household Electricity) *</label>
       <input type="text" name="work_upon" ng-required="true" class="form-control" placeholder="Explain on what you like to work on" ng-model="ctrl.newparticipant.q1_ans" />
       <p class="help-block" ng-show="theform.work_upon.$error.required && theform.work_upon.$touched">
         This field is required
@@ -73,20 +52,23 @@
       <label>“It’s not about ideas. It’s about making ideas happen.” - Scott Belsky, co-founder of Behance.We wish you all the best in executing your ideas!</label>
       <br />
       <br />
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=1">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></Button>
-      <button type="button"  class="next action-button"  ng-click="step=3" value="Next">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
+        <i class="glyphicon glyphicon-next" style="color: black"></i>
+	       <Button  class="next action-button" ng-click="step=2" >Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></Button>
 
-        <div style="color:rgb(217,83,79);font-size:13px" >
-          The fields marked with ** are required
-        </div>
+      <div style="color:rgb(217,83,79);font-size:13px;" >
+        The fields marked with * are required
+      </div>
 
     </fieldset>
 
-    <fieldset ng-show="step==3">
+
+
+
+    <fieldset ng-show="step==2">
       <h2 class="fs-title">Contact Details</h2>
       <h3 class="fs-subtitle">We will never sell it</h3>
   <div class="input-group has-feedback" ng-class="{'has-error':!theform.email.$valid && (theform.email.$dirty || theform.email.$touched),'has-success':theform.email.$valid}" >
-      <label class="control-label">Email ID (Don't worry, we send no spam) **</label>
+      <label class="control-label">Email ID (Don't worry, we send no spam) * </label>
       <input type="email" name="email" ng-required="true" ng-pattern="/^[A-Za-z0-9._-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/" class="form-control" placeholder="Enter your Email-id" ng-model="ctrl.newparticipant.email"/>
       <p class="help-block" ng-show="theform.email.$error.required && theform.email.$touched">
         This field is required
@@ -99,7 +81,7 @@
       </p>
       </div>
   <div class="input-group has-feedback" ng-class="{'has-error':!theform.mobno.$valid && (theform.mobno.$dirty || theform.mobno.$touched),'has-success':theform.mobno.$valid}" >
-      <label class="control-label">Mobile Number**</label>
+      <label class="control-label">Mobile Number *</label>
       <input type="text" name="mobno" ng-required="true" class="form-control" ng-pattern="/^[0-9]{10}$/" placeholder="Your Mobile number" ng-model="ctrl.newparticipant.mobile_no" />
 
       <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.mobno.$valid, 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.mobno.$valid && (!theform.mobno.$pristine || theform.mobno.$touched)}">
@@ -121,20 +103,20 @@
           Enter a Valid Mobile No. thats is 10-Digit long
       </p>
       <br />
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
-      <button type="button"  class="next action-button" value="Next" ng-click="step=4">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=1">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
+      <button type="button"  class="next action-button" value="Next" ng-click="step=3">Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
 
       <div style="color:rgb(217,83,79);font-size:13px" >
-        The fields marked with ** are required
+        The fields marked with * are required
       </div>
 
     </fieldset>
 
-    <fieldset ng-show="step==4">
+    <fieldset ng-show="step==3">
       <h2 class="fs-title">Team Details</h2>
       <h3 class="fs-subtitle">Team Work leads to success!</h3>
   <div class="input-group" ng-class="{'has-error':!theform.team_name.$valid && !theform.team_name.$untouched,'has-success':theform.team_name.$valid}" >
-      <label class="control-label">Team Name**</label>
+      <label class="control-label">Team Name *</label>
       <input type="text" name="team_name" class="form-control" ng-required="true" placeholder="Team Name" ng-model="ctrl.newparticipant.team_name" />
       <p class="help-block" ng-show="theform.team_name.$error.required && theform.team_name.$touched">
         This field is required
@@ -223,7 +205,7 @@
 
 
 
-      <button type="button" class="previous action-button" value="Previous"  ng-click="step=3">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
+      <button type="button" class="previous action-button" value="Previous"  ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
 
       <button name="Submit"  class="submit action-button" value="submit" ng-disabled="theform.Name.$error.required || theform.team_name.$error.required || theform.insti.$error.required || theform.stream.$error.required || theform.file.$error.required || theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || (theform.mem2_email.$error.required && !theform.mem2_name.$error.required) || (theform.mem3_email.$error.required && !theform.mem3_name.$error.required) || (theform.mem4_email.$error.required && !theform.mem4_name.$error.required) || (theform.mem5_email.$error.required && !theform.mem5_name.$error.required)"  ng-click ="ctrl.submitform()"  >Submit</button>
 
@@ -233,7 +215,7 @@
       </div>
       <br />
       <div style="color:rgb(217,83,79);font-size:13px" >
-        The fields marked with ** are required
+        The fields marked with * are required
       </div>
     </fieldset>
 

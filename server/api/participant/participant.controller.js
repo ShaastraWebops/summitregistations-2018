@@ -13,6 +13,8 @@
 import jsonpatch from 'fast-json-patch';
 import Participant from './participant.model';
 var json2csv = require('json2csv');
+var sendgrid = require("sendgrid")(process.env.SENDGRID);
+
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -83,8 +85,44 @@ export function show(req, res) {
 // Creates a new Participant in the DB
 export function create(req, res) {
   //Participant.members.push(req.body.members);
+  var array = [];
+  array = req.body.member_emails;
   return Participant.create(req.body)
-    .then(respondWithResult(res, 201))
+    .then( data => {
+      var text_body = '<html><body>Dear Applicant,<br><br>'+
+                        'Greetings from Green Energy Summit team, Shaastra 2018!<br><br>'+
+                        'Thank you for registering for Rural Energy Challenge. Your Summit ID: '+req.body.summitID+' <br>'+
+                        'Please note your Summit ID and include it in all further communications. <br><br> '+
+                        'For the second round, <b>we request you to send a brief proposal of your idea to <a href="mailto: summitregistrations@shaastra.org">summitregistrations@shaastra.org</a> by <u>25th August, 11:59 p.m.</u></b><br><br>'+
+                        'The project must incorporate principles of green energy for rural empowerment. You can browse through some possible solutions to energy problems here. Please stick to the guidelines while sending us the proposal. <br><br>'+
+                        'Guidelines for the proposal: <br><br>'+
+                        '1. Offer a brief description of your idea in 50 to 100 words.<br><br>' +
+                        '2. Explain how relevant and practical your idea is in the present situation. <br><br>'+
+                        '3. Give a tentative budget for developing a prototype of your proposed solution.   <br><br>'+
+                        '4. The proposal should be saved as "GroupName_ProductName" in .pdf format.  <br><br>'+
+                        'The Rural Energy Challenge will span four months, and all participants will get to work on energy related problems in rural areas with guidance from experts in the field. If selected, participants of Rural Energy Challenge will also get the chance to attend the Green Energy Conference, which will be held at IIT Madras Shaastra 2018 from 4th January to 7th January.<br><br>'+
+                        'Feel free to contact us in case of any queries. All emails should be sent to <a href="mailto: summitregistrations@shaastra.org">summitregistrations@shaastra.org</a>.<br><br>'+
+                        'Regards, <br> Green Energy Summit team <br> Shaastra 2018 <br> IIT Madras'
+                        '</body></html>'
+      var params = {
+          to: array,
+          from: 'webops@shaastra.org',
+          cc: 'summitregistrations@shaastra.org',
+          fromname: 'Shaastra WebOps',
+          subject: 'Shaastra 2018 || Summit',
+          html: text_body
+      };
+      var email = new sendgrid.Email(params);
+      sendgrid.send(email, function (err, json) {
+        if(err)
+          console.log('Error sending mail - ', err);
+        else
+          {
+            console.log('Success sending mail - ', json);
+          }
+      });
+      res.json({success: true});
+    })
     .catch(handleError(res));
 }
 
