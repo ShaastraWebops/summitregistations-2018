@@ -21,6 +21,10 @@ export class MainController {
   openBrochure(){
     window.open('http://shaastra.org/images/Participant Brochure.pdf', '_blank');
   }
+
+  openPS(){
+    window.open('http://shaastra.org/images/List of Problem Statements.pdf', '_blank');
+  }
 }
 
 export default angular.module('summitregistations2018App.main', [uiRouter])
