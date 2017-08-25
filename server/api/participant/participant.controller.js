@@ -93,7 +93,7 @@ export function create(req, res) {
                         'Greetings from Green Energy Summit team, Shaastra 2018!<br><br>'+
                         'Thank you for registering for Rural Energy Challenge. Your Summit ID: '+req.body.summitID+' <br>'+
                         'Please note your Summit ID and include it in all further communications. <br><br> '+
-                        'For the second round, <b>we request you to send a brief proposal of your idea to <a href="mailto: summitregistrations@shaastra.org">summitregistrations@shaastra.org</a> by <u>25th August, 11:59 p.m.</u></b><br><br>'+
+                        'For the second round, <b>we request you to send a brief proposal of your idea to <a href="mailto: summitregistrations@shaastra.org">summitregistrations@shaastra.org</a> by <u>September 1, 11:59 p.m.</u></b><br><br>'+
                         'The project must incorporate principles of green energy for rural empowerment. You can browse through some possible solutions to energy problems <a href="http://shaastra.org/images/List%20of%20Problem%20Statements.pdf">here</a>. Please stick to the guidelines while sending us the proposal. <br><br>'+
                         'Guidelines for the proposal: <br><br>'+
                         '1. Offer a brief description of your idea in 50 to 100 words.<br><br>' +
