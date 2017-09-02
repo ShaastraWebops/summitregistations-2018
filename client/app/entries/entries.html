@@ -14,7 +14,6 @@
 			<th>Mobile No</th>
 			<th>Sub Category</th>
 			<th>Experience</th>
-			<th>Resume</th>
 		</tr>
 		<tr ng-repeat='row in entriesCtrl.mem'>
 			<td class="main">{{row.team_name}}</td>
@@ -44,8 +43,8 @@
 			<td class="main">
 				{{row.q2_ans}}
 			</td>
-			<td class="main">
-       <button class="btn btn-primary" ng-click="entriesCtrl.download(row.resume,row.summitID)">Click here to download resume (as summitID.pdf)</button></td>
+<!-- 			<td class="main">
+       <button class="btn btn-primary" ng-click="entriesCtrl.download(row.resume,row.summitID)">Click here to download resume (as summitID.pdf)</button></td> -->
 		</tr>
 	</table>
 </div>
