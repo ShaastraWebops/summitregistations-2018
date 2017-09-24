@@ -93,15 +93,9 @@ export function create(req, res) {
                         'Greetings from Green Energy Summit team, Shaastra 2018!<br><br>'+
                         'Thank you for registering for Rural Energy Challenge. Your Summit ID: '+req.body.summitID+' <br>'+
                         'Please note your Summit ID and include it in all further communications. <br><br> '+
-                        'For the second round, <b>we request you to send a brief proposal of your idea to <a href="mailto: summitregistrations@shaastra.org">summitregistrations@shaastra.org</a> by <u>10th September, 11:59 p.m.</u></b><br><br>'+
-                        'The project must incorporate principles of green energy for rural empowerment. You can browse through some possible solutions to energy problems <a href="http://shaastra.org/images/List%20of%20Problem%20Statements.pdf">here</a>. Please stick to the guidelines while sending us the proposal. <br><br>'+
-                        'Guidelines for the proposal: <br><br>'+
-                        '1. Offer a brief description of your idea in 50 to 100 words.<br><br>' +
-                        '2. Explain how relevant and practical your idea is in the present situation. <br><br>'+
-                        '3. Give a tentative budget for developing a prototype of your proposed solution.   <br><br>'+
-                        '4. The proposal should be saved as "GroupName_ProductName" in .pdf format.  <br><br>'+
-                        'The Rural Energy Challenge will span four months, and all participants will get to work on energy related problems in rural areas with guidance from experts in the field. If selected, participants of Rural Energy Challenge will also get the chance to attend the Green Energy Conference, which will be held at IIT Madras Shaastra 2018 from 4th January to 7th January.<br><br>'+
-                        'Feel free to contact us in case of any queries. All emails should be sent to <a href="mailto: summitregistrations@shaastra.org">summitregistrations@shaastra.org</a>.<br><br>'+
+                        'The Green Energy Summit will be held from 4th January to 7th January during Shaastra 2018, IIT Madras. It is a platform for discussion and debate on various aspects of Green Energy. The summit aims to engage conscientious individuals in useful dialogue with experts in the field. Through unconventional lectures and discussions, and interactive workshops, the Green Energy Summit promises to be a journey of unparalleled learning and insights.'+
+                        '<br><br>Details regarding the selection procedure for Green Energy Summit will be mailed to you shortly.<br><br>'+
+                        'Feel free to contact us in case of any queries. All emails should be sent to <a href="mailto:summitregistrations@shaastra.org">summitregistrations@shaastra.org</a>.<br><br>' +
                         'Regards, <br> Green Energy Summit team <br> Shaastra 2018 <br> IIT Madras'
                         '</body></html>'
       var params = {
