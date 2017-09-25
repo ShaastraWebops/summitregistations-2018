@@ -69,7 +69,7 @@ label{
   background: white;
   border: 0 none;
   border-radius: 3px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4); */
   padding: 20px 30px;
   box-sizing: border-box;
   width: 90%;
@@ -174,4 +174,10 @@ label{
 #progressbar li.active:after {
   background: #27AE60;
   color: white;
+}
+
+
+.optionss label{
+  margin-bottom: 7px;
+  margin-left: 3px;
 }

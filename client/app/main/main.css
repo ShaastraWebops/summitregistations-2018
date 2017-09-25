@@ -12,6 +12,10 @@ h1, button{
   color: white;
 }
 
+.bigbox{
+  display: flex;
+}
+
 #entries{
   position: absolute;
   top: 0px;
@@ -22,7 +26,6 @@ h1, button{
   background: #4b6cb7;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-box-shadow: 0px 0px 10px #888888;
 }
 
 .mid{
@@ -35,13 +38,13 @@ box-shadow: 0px 0px 10px #888888;
 }
 
 .mid button{
-  padding: 16px;
+  padding: 5px 15px;
   background: #4b6cb7;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border: 0px solid black;
-  border-radius: 5px;
-  font-size: 36px;
+  border-radius: 2px;
+  font-size: 24px;
 }
 
 .mid button:hover{
@@ -53,6 +56,7 @@ box-shadow: 0px 0px 10px #888888;
 .m{
   flex: 1;
   min-width: 500px;
+  height: 100vh;
 }
 
 img{
@@ -63,7 +67,7 @@ img{
 }
 
 h1, button{
-  margin: 0vh 0vw 20vh 0vw;
+  margin-bottom: 50px;
   text-align: center;
 }
 
