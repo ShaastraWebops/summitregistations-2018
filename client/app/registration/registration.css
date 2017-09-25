@@ -39,6 +39,10 @@ input{
   width: 90%;
 }
 
+#option1{
+  display: inline-block;
+}
+
 #upload{
     box-shadow: 0 0 0 2px white inset;
     border: 1px solid white;

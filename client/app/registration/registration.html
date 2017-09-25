@@ -24,6 +24,13 @@
         <p class="help-block" ng-show="theform.stream.$error.required && theform.stream.$touched">This field is required</p>
       </div>
 
+      <div class="input-group">
+        <label class="control-label">Upload Document (in pdf only) *</label>
+          <input class="form-control" ng-required="true" name="file" type="file" id="file" />
+        <p class="help-block" style="color:rgb(217,83,79);font-size:13px;" id="errormsg" class="alert alert-danger"></p>
+        <p class="help-block" ng-show="theform.file.$error.required && theform.file.$touched">This field is required</p>
+      </div>
+
       <i class="glyphicon glyphicon-next" style="color: black"></i>
        <button  class="next action-button" ng-click="step=2" >Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
 
@@ -76,7 +83,7 @@
 
     <fieldset ng-show="step==3">
       <h3 class="fs-subtitle">Green Energy Summit 2018</h3>
-    
+
       <div class="input-group" ng-class="{'has-error':!theform.work_upon.$valid && !theform.work_upon.$untouched,'has-success':theform.work_upon.$valid}" >
         <label class="control-label">“It’s not about ideas and policies. It’s about making them happen.” - Please share your views on this statement related to Green Energy. *</label>
         <textarea type="text" name="work_upon" ng-required="true" class="form-control" style="" ng-model="ctrl.newparticipant.q1_ans" rows="5" ></textarea>
@@ -94,13 +101,40 @@
         <textarea type="text" name="take" ng-required="true" class="form-control" rows="5" ng-model="ctrl.newparticipant.q3_ans" />
         <p class="help-block" ng-show="theform.take.$error.required && theform.take.$touched">This field is required</p>
       </div>
-      
-      <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
-      <button name="Submit"  class="submit action-button" value="submit" ng-disabled="theform.Name.$error.required || theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid"  ng-click ="console.log('Hello')">Submit</button>
 
-      <p style="color:rgb(217,83,79);font-size:13px" class="help-block" ng-show="theform.Name.$error.required || theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">The form can't be submitted as some required fields aren't filled</p>
-      
+      <div class="input-group" ng-class="{'has-error':!theform.q4.$valid && !theform.q4.$untouched,'has-success':theform.q4.$valid}" >
+        <label>How did you find about Green Energy Summit? * </label>
+        <br>
+        <div style="width: 20%; display: inline-block;">
+          <input id="option1" name="q4" type="radio" ng-value="1" ng-model="ctrl.newparticipant.q4_ans">
+          <input id="option2" name="q4" type="radio" ng-value="2" ng-model="ctrl.newparticipant.q4_ans">
+          <input id="option3" name="q4" type="radio" ng-value="3" ng-model="ctrl.newparticipant.q4_ans">
+          <input id="option4" name="q4" type="radio" ng-value="4" ng-model="ctrl.newparticipant.q4_ans">
+          <input id="option5" name="q4" type="radio" ng-value="5" ng-model="ctrl.newparticipant.q4_ans">
+          <input id="option6" name="q4" type="radio" ng-value="6" ng-model="ctrl.newparticipant.q4_ans">
+        </div>
+        <div style=" width: 20%; display: inline-block; margin-top: 0px;">
+          <label for="option1">Facebook/Twitter</label><br>
+          <label for="option2">Mailout</label><br>
+          <label for="option3">Poster</label><br>
+          <label for="option4">Website</label><br>
+          <label for="option5">Friends</label><br>
+          <label for="option6">Others</label><br>
+        </div>
+        <p class="help-block" ng-show="theform.q4.$error.required && theform.q4.$touched">This field is required</p>
+
+         <br><br>
+
+        <p class="help-block" ng-show="theform.take.$error.required && theform.take.$touched">This field is required</p>
+      </div>
+
+      <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
+      <button name="Submit" ng-click="ctrl.submit()" class="submit action-button" value="submit" ng-disabled="theform.Name.$error.required || theform.file.$error.required|| theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">Submit</button>
+
+      <p style="color:rgb(217,83,79);font-size:13px" class="help-block" ng-show="theform.Name.$error.required || theform.file.$error.required|| theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">The form can't be submitted as some required fields aren't filled</p>
+
       <p style="color:rgb(217,83,79);font-size:13px">The fields marked with * are required</p>
+
     </fieldset>
 
   </div>

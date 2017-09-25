@@ -9,10 +9,13 @@ export class RegistrationComponent {
 
   members = [];
 
-  constructor($http) {
+  constructor($http,$scope) {
         'ngInject';
 
     this.$http = $http;
+    this.fileerror = true;
+    this.error = true;
+    this.$scope = $scope;
     this.newparticipant = {
         name: '',
         insti: '',
@@ -23,13 +26,32 @@ export class RegistrationComponent {
         q1_ans: '',
         q2_ans: '',
         q3_ans: '',
+        q4_ans: ''
     };
     this.submitted = false;
   }
 
   $onInit() {
-  this.step=1;
-  }
+   this.step=1;
+   var app = this;
+   $('#file').on('change', function() {
+     var file = $('#file')[0].files[0];
+     if(!file.name.match(/\.(pdf)$/))
+     {
+       $('#errormsg').html("Only PDF files allowed");
+       app.fileerror = true;
+       angular.element("input[name='file']").val(null);
+       angular.element("input[name='file_name']").val(null);
+     }
+     else {
+       $('#errormsg').html("");
+       app.fileerror = false;
+     }
+
+   })
+
+ }
+
 
   submitform(){
     this.$http.get('/api/participants').then(res => {
@@ -53,6 +75,11 @@ export class RegistrationComponent {
   this.emails = [];
   this.names.push(this.newparticipant.name);
   this.emails.push(this.newparticipant.email);
+  if(this.fileerror)
+  {
+    window.alert('File is not uploaded yet');
+    return;
+  }
   if(this.newparticipant.mem2_name != null)
     {
       this.names.push(this.newparticipant.mem2_name);
@@ -73,7 +100,33 @@ export class RegistrationComponent {
     this.names.push(this.newparticipant.mem5_name);
     this.emails.push(this.newparticipant.mem5_email);
   }
-
+  if(this.newparticipant.q4_ans == 1)
+  {
+    this.newparticipant.q4_ans = "Facebook/Twitter";
+  }
+  else if(this.newparticipant.q4_ans == 2)
+  {
+    this.newparticipant.q4_ans = "Mailout";
+  }
+  else if(this.newparticipant.q4_ans == 3)
+  {
+    this.newparticipant.q4_ans = "Poster";
+  }
+  else if(this.newparticipant.q4_ans == 4)
+  {
+    this.newparticipant.q4_ans = "Website";
+  }
+  else if(this.newparticipant.q4_ans == 5)
+  {
+    this.newparticipant.q4_ans = "Friends";
+  }
+  else if(this.newparticipant.q4_ans == 6)
+  {
+    this.newparticipant.q4_ans = "Others";
+  }
+  else {
+    this.error = true;
+  }
       this.$http.post('/api/participants', {
         insti: this.newparticipant.insti,
         stream: this.newparticipant.stream,
@@ -82,29 +135,40 @@ export class RegistrationComponent {
         alt_mobno: this.newparticipant.alt_mobno,
         q1_ans: this.newparticipant.q1_ans,
         q2_ans: this.newparticipant.q2_ans,
+        q3_ans: this.newparticipant.q3_ans,
+        q4_ans: this.newparticipant.q4_ans,
         team_name: this.newparticipant.team_name,
         member_names: this.names,
         member_emails: this.emails
       }).then(data => {
-        /*var formData = new FormData;
-                var file = $('#file')[0].files[0];
-                console.log(file);
-                formData.append('uploadedFile', file);
-                this.$http.post('/api/uploads/' + data.data._id , formData, {
-
-                  transformRequest: angular.identity,
-                  headers: {
-                    'Content-Type': undefined
-                  }
-                }).then(response => {
-                  angular.element("input[name='file']").val(null);
-                  angular.element("input[name='file_name']").val(null);
-                });*/
+            console.log(data);
                 if(data.data.success){
-        window.alert('Registered Successfully!');
-        window.location = '/';
+                  var formData = new FormData;
+                  var file = $('#file')[0].files[0];
+                  formData.append('uploadedFile', file);
+                  this.$http.post('/api/uploads/' + data.data.id, formData, {
+
+                    transformRequest: angular.identity,
+                    headers: {
+                      'Content-Type': undefined
+                    }
+                  }).then(response => {
+                    if(response.data.success === false)
+                    {
+                      this.error = response.data.msg;
+                      this.success = false;
+                    }
+                    else {
+                      this.success = response.data.msg;
+                      window.alert('That\'s all we need. You should receive a confirmatory email from us soon. \n In case you have any doubts or queries, please contact us at summitregistrations@shaastra.org');
+                      window.location = '/';
+                      this.error = false;
+                    }
+                    angular.element("input[name='file']").val(null);
+                    angular.element("input[name='file_name']").val(null);
+                  });
       }
-      });
+    });
   }
 
 }

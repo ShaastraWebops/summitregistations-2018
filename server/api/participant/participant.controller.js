@@ -115,7 +115,7 @@ export function create(req, res) {
             console.log('Success sending mail - ', json);
           }
       });
-      res.json({success: true});
+      res.json({success: true, id: data._id});
     })
     .catch(handleError(res));
 }
