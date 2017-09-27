@@ -37,14 +37,20 @@ background: linear-gradient(to right, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, F
     filter: invert();
 }
 
+.mid p{
+  margin-bottom: 5vh;
+  font-size: 18px;
+  padding: 0 10%;
+}
+
 .mid button{
-  padding: 5px 15px;
+  padding: 10px 20px;
   background: #4b6cb7;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #182848, #4b6cb7);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #182848, #4b6cb7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border: 0px solid black;
   border-radius: 2px;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .mid button:hover{
@@ -73,4 +79,14 @@ h1, button{
 
 a{
   text-decoration: none;
+}
+
+@media only screen and (max-width: 767px){
+  .bigbox{
+    flex-direction: column;
+  }
+
+  .m{
+    height: 50vh;
+  }
 }
