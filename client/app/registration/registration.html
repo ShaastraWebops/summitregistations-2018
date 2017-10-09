@@ -24,12 +24,12 @@
         <p class="help-block" ng-show="theform.stream.$error.required && theform.stream.$touched">This field is required</p>
       </div>
 
-      <div class="input-group">
+      <!--<div class="input-group">
         <label class="control-label">Upload Document (in pdf only) *</label>
           <input class="form-control" ng-required="true" name="file" type="file" id="file" />
         <p class="help-block" style="color:rgb(217,83,79);font-size:13px;" id="errormsg" class="alert alert-danger"></p>
         <p class="help-block" ng-show="theform.file.$error.required && theform.file.$touched">This field is required</p>
-      </div>
+      </div>-->
 
       <i class="glyphicon glyphicon-next" style="color: black"></i>
        <button  class="next action-button" ng-click="step=2" >Next Step <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
@@ -129,9 +129,9 @@
       </div>
 
       <button type="button" class="previous action-button" value="Previous" ng-click="step=2">Prev Step <span class="glyphicon glyphicon-circle-arrow-left"></span></button>
-      <button name="Submit" ng-click="ctrl.submit()" class="submit action-button" value="submit" ng-disabled="theform.Name.$error.required || theform.file.$error.required|| theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">Submit</button>
+      <button name="Submit" ng-click="ctrl.submit()" class="submit action-button" value="submit" ng-disabled="theform.Name.$error.required || theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">Submit</button>
 
-      <p style="color:rgb(217,83,79);font-size:13px" class="help-block" ng-show="theform.Name.$error.required || theform.file.$error.required|| theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">The form can't be submitted as some required fields aren't filled</p>
+      <p style="color:rgb(217,83,79);font-size:13px" class="help-block" ng-show="theform.Name.$error.required || theform.insti.$error.required || theform.stream.$error.required ||  theform.work_upon.$error.required || theform.email.$error.required || theform.$error.pattern || theform.experience.$error.required || theform.take.$error.required || theform.mobno.$error.required || theform.alt_mobno.$error.required || theform.email.$error.valid">The form can't be submitted as some required fields aren't filled</p>
 
       <p style="color:rgb(217,83,79);font-size:13px">The fields marked with * are required</p>
 

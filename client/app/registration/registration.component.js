@@ -33,8 +33,8 @@ export class RegistrationComponent {
 
   $onInit() {
    this.step=1;
-   var app = this;
-   $('#file').on('change', function() {
+   //var app = this;
+   /*$('#file').on('change', function() {
      var file = $('#file')[0].files[0];
      if(!file.name.match(/\.(pdf)$/))
      {
@@ -48,7 +48,7 @@ export class RegistrationComponent {
        app.fileerror = false;
      }
 
-   })
+   })*/
 
  }
 
@@ -75,11 +75,6 @@ export class RegistrationComponent {
   this.emails = [];
   this.names.push(this.newparticipant.name);
   this.emails.push(this.newparticipant.email);
-  if(this.fileerror)
-  {
-    window.alert('File is not uploaded yet');
-    return;
-  }
   if(this.newparticipant.mem2_name != null)
     {
       this.names.push(this.newparticipant.mem2_name);
@@ -141,8 +136,11 @@ export class RegistrationComponent {
         member_names: this.names,
         member_emails: this.emails
       }).then(data => {
-            console.log(data);
                 if(data.data.success){
+                  window.alert('That\'s all we need. You should receive a confirmatory email from us soon. \n In case you have any doubts or queries, please contact us at summitregistrations@shaastra.org');
+                  window.location = '/';
+
+                  /*
                   var formData = new FormData;
                   var file = $('#file')[0].files[0];
                   formData.append('uploadedFile', file);
@@ -166,7 +164,7 @@ export class RegistrationComponent {
                     }
                     angular.element("input[name='file']").val(null);
                     angular.element("input[name='file_name']").val(null);
-                  });
+                  });*/
       }
     });
   }
