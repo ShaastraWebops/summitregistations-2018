@@ -106,12 +106,12 @@
         <label>How did you find about Green Energy Summit? * </label>
         <br>
         <div style="width: 10px; float:left; margin:0;">
-          <input id="option1" name="q4" type="radio" ng-value="1" ng-model="ctrl.newparticipant.q4_ans">
-          <input id="option2" name="q4" type="radio" ng-value="2" ng-model="ctrl.newparticipant.q4_ans">
-          <input id="option3" name="q4" type="radio" ng-value="3" ng-model="ctrl.newparticipant.q4_ans">
-          <input id="option4" name="q4" type="radio" ng-value="4" ng-model="ctrl.newparticipant.q4_ans">
-          <input id="option5" name="q4" type="radio" ng-value="5" ng-model="ctrl.newparticipant.q4_ans">
-          <input id="option6" name="q4" type="radio" ng-value="6" ng-model="ctrl.newparticipant.q4_ans">
+          <input id="option1" name="q4" type="radio" ng-value="1" ng-model="ctrl.newparticipant.q4_ans" ng-click="others = false;">
+          <input id="option2" name="q4" type="radio" ng-value="2" ng-model="ctrl.newparticipant.q4_ans" ng-click="others = false;">
+          <input id="option3" name="q4" type="radio" ng-value="3" ng-model="ctrl.newparticipant.q4_ans" ng-click="others = false;">
+          <input id="option4" name="q4" type="radio" ng-value="4" ng-model="ctrl.newparticipant.q4_ans" ng-click="others = false;">
+          <input id="option5" name="q4" type="radio" ng-value="5" ng-model="ctrl.newparticipant.q4_ans" ng-click="others = false;">
+          <input id="option6" name="q4" type="radio" ng-value="6" ng-model="ctrl.newparticipant.q4_ans"  ng-click="others = true;">
         </div>
         <div class="optionss">
           <label for="option1">Facebook/Twitter</label><br>
@@ -121,6 +121,11 @@
           <label for="option5">Friends</label><br>
           <label for="option6">Others</label><br>
         </div>
+        <br>
+        <div ng-show="others">
+        <label> Enter other source: </label>
+        <input type="text" ng-model="q4_ans" />
+      </div>
         <p class="help-block" ng-show="theform.q4.$error.required && theform.q4.$touched">This field is required</p>
 
          <br><br>

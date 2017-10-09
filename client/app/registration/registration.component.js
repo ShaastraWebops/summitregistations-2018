@@ -117,7 +117,7 @@ export class RegistrationComponent {
   }
   else if(this.newparticipant.q4_ans == 6)
   {
-    this.newparticipant.q4_ans = "Others";
+    this.newparticipant.q4_ans = this.$scope.q4_ans;
   }
   else {
     this.error = true;
