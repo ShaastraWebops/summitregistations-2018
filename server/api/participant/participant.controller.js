@@ -15,7 +15,6 @@ import Participant from './participant.model';
 var json2csv = require('json2csv');
 var sendgrid = require("sendgrid")(process.env.SENDGRID);
 
-
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
@@ -108,7 +107,7 @@ export function create(req, res) {
                             'The Green Energy Summit will be held from 4th January to 7th January during Shaastra 2018, IIT Madras. It is a platform for discussion and debate on various aspects of Green Energy. The summit aims to engage conscientious individuals in useful dialogue with experts in the field. Through unconventional lectures and discussions, and interactive workshops, the Green Energy Summit promises to be a journey of unparalleled learning and insights.'+
                             '<br><br>Details regarding the selection procedure for Green Energy Summit will be mailed to you shortly.<br><br>'+
                             'Feel free to contact us in case of any queries. All emails should be sent to <a href="mailto:summitregistrations@shaastra.org">summitregistrations@shaastra.org</a>.<br><br>' +
-                            'Regards, <br> Green Energy Summit team <br> Shaastra 2018 <br> IIT Madras'
+                            'Regards, <br> Green Energy Summit team <br> Shaastra 2018 <br> IIT Madras<br><br><br><br>'
                             '</body></html>'
           var params = {
               to: array,
