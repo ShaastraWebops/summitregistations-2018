@@ -142,7 +142,7 @@ export class RegistrationComponent {
         member_emails: this.emails
       }).then(data => {
                 if(data.data.success){
-                  window.alert(this.count+this.summitID+'That\'s all we need. You should receive a confirmatory email from us soon. \n In case you have any doubts or queries, please contact us at summitregistrations@shaastra.org');
+                  window.alert('That\'s all we need. You should receive a confirmatory email from us soon. \n In case you have any doubts or queries, please contact us at summitregistrations@shaastra.org');
                   window.location = '/';
 
                   /*
