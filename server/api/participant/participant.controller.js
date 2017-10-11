@@ -87,37 +87,51 @@ export function create(req, res) {
   //Participant.members.push(req.body.members);
   var array = [];
   array = req.body.member_emails;
-  return Participant.create(req.body)
-    .then( data => {
-      var text_body = '<html><body>Dear Applicant,<br><br>'+
-                        'Greetings from Green Energy Summit team, Shaastra 2018!<br><br>'+
-                        'Thank you for registering for Rural Energy Challenge. Your Summit ID: '+req.body.summitID+' <br>'+
-                        'Please note your Summit ID and include it in all further communications. <br><br> '+
-                        'The Green Energy Summit will be held from 4th January to 7th January during Shaastra 2018, IIT Madras. It is a platform for discussion and debate on various aspects of Green Energy. The summit aims to engage conscientious individuals in useful dialogue with experts in the field. Through unconventional lectures and discussions, and interactive workshops, the Green Energy Summit promises to be a journey of unparalleled learning and insights.'+
-                        '<br><br>Details regarding the selection procedure for Green Energy Summit will be mailed to you shortly.<br><br>'+
-                        'Feel free to contact us in case of any queries. All emails should be sent to <a href="mailto:summitregistrations@shaastra.org">summitregistrations@shaastra.org</a>.<br><br>' +
-                        'Regards, <br> Green Energy Summit team <br> Shaastra 2018 <br> IIT Madras'
-                        '</body></html>'
-      var params = {
-          to: array,
-          from: 'webops@shaastra.org',
-          cc: 'summitregistrations@shaastra.org',
-          fromname: 'Shaastra WebOps',
-          subject: 'Shaastra 2018 || Summit',
-          html: text_body
-      };
-      var email = new sendgrid.Email(params);
-      sendgrid.send(email, function (err, json) {
-        if(err)
-          console.log('Error sending mail - ', err);
-        else
-          {
-            console.log('Success sending mail - ', json);
-          }
+  Participant.find().exec().then( res1=>{
+     var count = res1.length;
+     if(count<10)
+        req.body.summitID = 'SUM18000'+count;
+      else if(count<100)
+        req.body.summitID = 'SUM1800'+count;
+      else if(count<1000)
+        req.body.summitID = 'SUM180'+count;
+      else if(count<10000)
+        req.body.summitID = 'SUM18'+count;
+
+      console.log(count+req.body.summitID+"SUMMIT");
+      return Participant.create(req.body)
+        .then( data => {
+          var text_body = '<html><body>Dear Applicant,<br><br>'+
+                            'Greetings from Green Energy Summit team, Shaastra 2018!<br><br>'+
+                            'Thank you for registering for Rural Energy Challenge. Your Summit ID: '+req.body.summitID+' <br>'+
+                            'Please note your Summit ID and include it in all further communications. <br><br> '+
+                            'The Green Energy Summit will be held from 4th January to 7th January during Shaastra 2018, IIT Madras. It is a platform for discussion and debate on various aspects of Green Energy. The summit aims to engage conscientious individuals in useful dialogue with experts in the field. Through unconventional lectures and discussions, and interactive workshops, the Green Energy Summit promises to be a journey of unparalleled learning and insights.'+
+                            '<br><br>Details regarding the selection procedure for Green Energy Summit will be mailed to you shortly.<br><br>'+
+                            'Feel free to contact us in case of any queries. All emails should be sent to <a href="mailto:summitregistrations@shaastra.org">summitregistrations@shaastra.org</a>.<br><br>' +
+                            'Regards, <br> Green Energy Summit team <br> Shaastra 2018 <br> IIT Madras'
+                            '</body></html>'
+          var params = {
+              to: array,
+              from: 'webops@shaastra.org',
+              cc: 'summitregistrations@shaastra.org',
+              fromname: 'Shaastra WebOps',
+              subject: 'Shaastra 2018 || Summit',
+              html: text_body
+          };
+          var email = new sendgrid.Email(params);
+          sendgrid.send(email, function (err, json) {
+            if(err)
+              console.log('Error sending mail - ', err);
+            else
+              {
+                console.log('Success sending mail - ', json);
+              }
+          });
+          res.json({success: true, id: data._id});
+        })
+        .catch(handleError(res));
+
       });
-      res.json({success: true, id: data._id});
-    })
-    .catch(handleError(res));
 }
 
 export function exp(req, res) {

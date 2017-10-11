@@ -16,6 +16,8 @@ export class RegistrationComponent {
     this.fileerror = true;
     this.error = true;
     this.$scope = $scope;
+    this.count = 0;
+    this.summitID = '';
     this.newparticipant = {
         name: '',
         insti: '',
@@ -53,20 +55,23 @@ export class RegistrationComponent {
  }
 
 
-  submitform(){
-    this.$http.get('/api/participants').then(res => {
-      this.count = res.data.length+1;
-      if(this.count<10)
-        this.summitID = 'SUM18000'+this.count;
-      else if(this.count<100)
-        this.summitID = 'SUM1800'+this.count;
-      else if(this.count<1000)
-        this.summitID = 'SUM180'+this.count;
-      else if(this.count<10000)
-        this.summitID = 'SUM18'+this.count;
-      this.submit();
-    });
-  }
+  // submitform(){
+  //   this.$http.get('/api/participants').then(res => {
+  //     this.count = res.data.length+1;
+  //     window.alert(this.count.toString());
+  //     // console.log(this.count+"No of count");
+  //     if(this.count<10)
+  //       this.summitID = 'SUM18000'+this.count;
+  //     else if(this.count<100)
+  //       this.summitID = 'SUM1800'+this.count;
+  //     else if(this.count<1000)
+  //       this.summitID = 'SUM180'+this.count;
+  //     else if(this.count<10000)
+  //       this.summitID = 'SUM18'+this.count;
+  //     // console.log("summitID"+this.summitID);
+  //     this.submit();
+  //   });
+  // }
 
  submit(){
   this.submitted = true;
@@ -137,7 +142,7 @@ export class RegistrationComponent {
         member_emails: this.emails
       }).then(data => {
                 if(data.data.success){
-                  window.alert('That\'s all we need. You should receive a confirmatory email from us soon. \n In case you have any doubts or queries, please contact us at summitregistrations@shaastra.org');
+                  window.alert(this.count+this.summitID+'That\'s all we need. You should receive a confirmatory email from us soon. \n In case you have any doubts or queries, please contact us at summitregistrations@shaastra.org');
                   window.location = '/';
 
                   /*
