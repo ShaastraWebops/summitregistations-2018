@@ -91,13 +91,13 @@
       </div>
 
       <div class="input-group" ng-class="{'has-error':!theform.experience.$valid && !theform.experience.$untouched,'has-success':theform.experience.$valid}" >
-        <label>Sustainable use of Energy is the need of the hour. Can Green Energy solve this pressing issue? Please share your perspectives here. *</label>
+        <label class="control-label">Sustainable use of Energy is the need of the hour. Can Green Energy solve this pressing issue? Please share your perspectives here. *</label>
         <textarea type="text" name="experience" ng-required="true" class="form-control" rows="5" ng-model="ctrl.newparticipant.q2_ans" />
         <p class="help-block" ng-show="theform.experience.$error.required && theform.experience.$touched">This field is required</p>
       </div>
 
       <div class="input-group" ng-class="{'has-error':!theform.take.$valid && !theform.take.$untouched,'has-success':theform.take.$valid}" >
-        <label>What do you expect to take away from Green Energy Summit? * </label>
+        <label class="control-label">What do you expect to take away from Green Energy Summit? * </label>
         <textarea type="text" name="take" ng-required="true" class="form-control" rows="5" ng-model="ctrl.newparticipant.q3_ans" />
         <p class="help-block" ng-show="theform.take.$error.required && theform.take.$touched">This field is required</p>
       </div>
