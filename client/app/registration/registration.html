@@ -67,7 +67,7 @@
 
       <div class="input-group has-feedback" ng-class="{'has-error':!theform.alt_mobno.$valid && !theform.alt_mobno.$error.required,'has-success':theform.alt_mobno.$valid && theform.alt_mobno.$dirty}" >
         <label class="control-label">Alternative Mobile Number</label>
-        <input type="text" name="alt_mobno"  ng-required="true" placeholder="Alternate Mobile number" class="form-control" ng-pattern="/^[0-9]{10}$/" ng-model="ctrl.newparticipant.alt_mobno" />
+        <input type="text" name="alt_mobno" placeholder="Alternate Mobile number" class="form-control" ng-pattern="/^[0-9]{10}$/" ng-model="ctrl.newparticipant.alt_mobno" />
         <div ng-class="{'glyphicon glyphicon-ok form-control-feedback':theform.alt_mobno.$valid , 'glyphicon glyphicon-remove-sign form-control-feedback': !theform.alt_mobno.$valid && (!theform.alt_mobno.$pristine || theform.alt_mobno.$touched)}"></div>
         <p class="help-block" ng-show="!theform.alt_mobno.$error.required  && theform.alt_mobno.$invalid ">Enter a Valid Mobile No. thats is 10-Digit long</p>
       </div>
@@ -91,13 +91,13 @@
       </div>
 
       <div class="input-group" ng-class="{'has-error':!theform.experience.$valid && !theform.experience.$untouched,'has-success':theform.experience.$valid}" >
-        <label>Sustainable use of Energy is the need of the hour. Can Green Energy solve this pressing issue? Please share your perspectives here. *</label>
+        <label class="control-label">Sustainable use of Energy is the need of the hour. Can Green Energy solve this pressing issue? Please share your perspectives here. *</label>
         <textarea type="text" name="experience" ng-required="true" class="form-control" rows="5" ng-model="ctrl.newparticipant.q2_ans" />
         <p class="help-block" ng-show="theform.experience.$error.required && theform.experience.$touched">This field is required</p>
       </div>
 
       <div class="input-group" ng-class="{'has-error':!theform.take.$valid && !theform.take.$untouched,'has-success':theform.take.$valid}" >
-        <label>What do you expect to take away from Green Energy Summit? * </label>
+        <label class="control-label">What do you expect to take away from Green Energy Summit? * </label>
         <textarea type="text" name="take" ng-required="true" class="form-control" rows="5" ng-model="ctrl.newparticipant.q3_ans" />
         <p class="help-block" ng-show="theform.take.$error.required && theform.take.$touched">This field is required</p>
       </div>

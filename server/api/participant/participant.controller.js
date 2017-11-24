@@ -102,7 +102,7 @@ export function create(req, res) {
         .then( data => {
           var text_body = '<html><body>Dear Applicant,<br><br>'+
                             'Greetings from Green Energy Summit team, Shaastra 2018!<br><br>'+
-                            'Thank you for registering for Rural Energy Challenge. Your Summit ID: '+req.body.summitID+' <br>'+
+                            'Thank you for registering for Green Energy Summit. Your Summit ID: '+req.body.summitID+' <br>'+
                             'Please note your Summit ID and include it in all further communications. <br><br> '+
                             'The Green Energy Summit will be held from 4th January to 7th January during Shaastra 2018, IIT Madras. It is a platform for discussion and debate on various aspects of Green Energy. The summit aims to engage conscientious individuals in useful dialogue with experts in the field. Through unconventional lectures and discussions, and interactive workshops, the Green Energy Summit promises to be a journey of unparalleled learning and insights.'+
                             '<br><br>Details regarding the selection procedure for Green Energy Summit will be mailed to you shortly.<br><br>'+
