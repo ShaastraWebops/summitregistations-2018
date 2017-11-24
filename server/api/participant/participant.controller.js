@@ -142,7 +142,7 @@ export function exp(req, res) {
         participants[i].resume = participants[i].team_name + '.pdf';   //As resume files are downloaded with the name as the team_name
       }
 
-      var fields = ['summitID', 'insti','stream','mobile_no','alt_mobno','q1_ans','q2_ans','resume','team_name',
+      var fields = ['summitID', 'insti','stream','mobile_no','alt_mobno','q1_ans','q2_ans', 'q3_ans', 'q4_ans','team_name',
       {
         label: 'Member 1: Name',
         value: 'member_names[0]'
